@@ -1,0 +1,51 @@
+#text {
+    color: var(--color-normal-contrast-weakest);
+    margin: auto;
+    width: 180px;
+}
+
+.counter {
+    text-align: center;
+}
+
+.ui-button {
+    border: none;
+    display: flex;
+    padding: 0.4rem 0.8rem;
+    /* giảm padding */
+    background-color: #488aec;
+    color: #ffffff;
+    font-size: 0.65rem;
+    /* nhỏ hơn 0.75rem */
+    line-height: 1rem;
+    font-weight: 400;
+    /* tăng nhẹ độ đậm để dễ đọc khi nhỏ */
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 0.4rem;
+    /* giảm bo góc */
+    user-select: none;
+    gap: 0.4rem;
+    /* giảm khoảng cách giữa icon/text nếu có */
+    box-shadow: 0 3px 5px -1px #488aec31, 0 1px 3px -1px #488aec17;
+    transition: all 0.3s ease;
+    /* nhanh hơn */
+}
+
+button:hover {
+    box-shadow: 0 10px 15px -3px #488aec4f, 0 4px 6px -2px #488aec17;
+}
+
+button:focus,
+button:active {
+    opacity: 0.85;
+    box-shadow: none;
+}
+
+button svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
