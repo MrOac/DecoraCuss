@@ -8,6 +8,10 @@ const { ccclass, property, executeInEditMode } = _decorator;
 @Identification("NewComponent")
 export class NewComponent extends CompenentCustom {
     tesstaaa: "1111111111111111111111111"
+
+
+    
+
     protected onLoad(): void {
         
 

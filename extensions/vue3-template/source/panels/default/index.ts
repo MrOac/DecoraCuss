@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs-extra';
-import { join } from 'path';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs-extra';
+import { dirname, join } from 'path';
 import { createApp, App } from 'vue';
 
 const panelDataMap = new WeakMap<any, App>();
@@ -27,14 +27,16 @@ module.exports = Editor.Panel.define({
                 this.$.text.innerHTML = 'hello';
             }
         },
-        callFile(msg: any) {
-            console.log("call From Secene in to index.js", msg);
-            Object.assign(panelDataMap, {})
+        callFile(msg: string) {
+            let convertObjectData = JSON.parse(msg);
+            console.log(`[index.ts]`, typeof convertObjectData, convertObjectData)
+            Object.assign(dataCpm, convertObjectData);
 
         }
         ,
         async asyncDataToJsonAct() {
             console.log("asyncDataToJsonAct");
+
             await Editor.Message.request('scene', 'query-node-tree').then((result) => {
                 console.log('🌿 Node tree result:', result);
             });
@@ -76,33 +78,38 @@ module.exports = Editor.Panel.define({
                     };
                 }, methods: {
                     addition() {
-                        ///genFile 
                         console.log("Action GenFile--->>>>>>>>>>>>");
+                        console.log("[index.ts method]", dataCpm);
 
-                        // const { quickSpawn } = globalThis.Editor.Utils.Process;
+                        // @ts-ignore
+                        const pathRootProject = globalThis.projectPathRoot;
 
-                        // const winPath = globalThis.Editor.Project.path.replace(/\//g, '\\');
-                        // const fullPath = `${winPath}\\assets\\my-file.json`;
-                        // const json = data
-                        // const jsonString = JSON.stringify(json, null, 4);
-                        // console.log(jsonString);
-                        // // Sử dụng PowerShell để ghi nội dung JSON an toàn
-                        // const psCommand = `Set-Content -Path "${fullPath}" -Value '${jsonString}'`;
+                        // 1. Tìm hoặc tạo thư mục 'output'
+                        let outputDir = join(pathRootProject, 'output');
+                        if (!existsSync(outputDir)) {
+                            mkdirSync(outputDir, { recursive: true });
+                        }
 
-                        // quickSpawn('powershell', ['-Command', psCommand], {
-                        //     downGradeLog: true,
-                        //     onlyPrintWhenError: false,
-                        //     prefix: '',
-                        // }).then(() => {
-                        //     console.log(`✅ JSON file created at: ${fullPath}`);
-                        // }).catch(err => {
-                        //     console.error('❌ Failed to create JSON file:', err.message);
-                        // });
+                        // 2. Tạo timestamp: 15h30_26062025
+                        const now = new Date();
+                        const pad = (n: number) => n.toString().padStart(2, '0');
+                        const timeStr = `${pad(now.getHours())}h${pad(now.getMinutes())}_${pad(now.getDate())}${pad(now.getMonth() + 1)}${now.getFullYear()}`;
 
+                        // 3. Tạo file name
+                        let baseName = `data_${timeStr}`;
+                        let finalPath = join(outputDir, `${baseName}.json`);
+                        console.log(pathRootProject)
+                        return
+                        // 4. Nếu file đã tồn tại thì thêm counter
+                        let counter = 1;
+                        while (existsSync(finalPath)) {
+                            finalPath = join(outputDir, `${baseName}_${counter}.json`);
+                            counter++;
+                        }
 
-
-                    },
-                    subtraction() {
+                        // 5. Ghi file
+                        writeFileSync(finalPath, JSON.stringify(dataCpm, null, 4), 'utf-8');
+                        console.log(`✅ File written to: ${finalPath}`);
                     },
                 },
             });

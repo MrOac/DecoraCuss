@@ -37,11 +37,9 @@ export class CompenentCustom extends Component {
 
         switch (type) {
             case typeCpm.DROP_DOW:
-
                 break;
 
             case typeCpm.HEX_COST:
-
                 break;
 
             case typeCpm.BG_END_SCREEN:
@@ -50,13 +48,11 @@ export class CompenentCustom extends Component {
                 break;
             case typeCpm.SPRITE_END:
                 console.log("SPRITE_END");
-
                 dataSetup = this.getValueSprite();
+                
                 console.log(dataSetup);
                 break;
-
             case typeCpm.TEXT_END:
-
                 break;
 
             case typeCpm.TUTORIAL_BOX:
