@@ -1,0 +1,54 @@
+{
+    "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu": {
+        "label": "The button image",
+        "type": "object",
+        "category": "",
+        "default": {
+            "x": 100,
+            "y": 100
+        },
+        "parameters": {
+            "sprite": {
+                "label": "sprite of this object",
+                "type": "image",
+                "default": ""
+            },
+            "size": {
+                "label": "",
+                "type": "",
+                "default": {
+                    "x": 0,
+                    "y": 0
+                },
+                "x": {
+                    "min": 0,
+                    "max": 10000,
+                    "step": 1
+                },
+                "y": {
+                    "min": 0,
+                    "max": 10000,
+                    "step": 1
+                }
+            },
+            "pos": {
+                "label": "",
+                "type": "",
+                "default": {
+                    "x": 0,
+                    "y": 0
+                },
+                "x": {
+                    "min": -1000,
+                    "max": 1000,
+                    "step": 1
+                },
+                "y": {
+                    "min": -1000,
+                    "max": 1000,
+                    "step": 1
+                }
+            }
+        }
+    }
+}

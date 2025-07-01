@@ -29,12 +29,16 @@ export class TestLayoutReference extends CompenentCustom {
         
 
         Editor.Panel.has("vue3-template").then(async (value) => {
-            if (!value) Editor.Panel.open("vue3-template");
+            // if (!value) Editor.Panel.open("vue3-template");
             // const result = await this.getCpmIdentification();
             console.log("_________________________________");
             console.log(this.dataCpm);
             const dataCpm = JSON.stringify(this.dataCpm);
 
+<<<<<<< HEAD
+=======
+            
+>>>>>>> e548b5cb4b1946d5ad03309eaf355f725aef1d20
             Editor.Message.send('vue3-template', "callFile", dataCpm);
             
         });
