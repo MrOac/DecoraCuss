@@ -1,116 +1,110 @@
+import { writeFileSync } from 'fs';
 import { readFileSync } from 'fs-extra';
 import { join } from 'path';
-import { createApp, App } from 'vue';
+import { createApp, App, reactive } from 'vue';
 
 const panelDataMap = new WeakMap<any, App>();
-/**
- * @zh 如果希望兼容 3.3 之前的版本可以使用下方的代码
- * @en You can add the code below if you want compatibility with versions prior to 3.3
- */
-// Editor.Panel.define = Editor.Panel.define || function(options: any) { return options }
 
-const dataCpm: any = {};
+// Dữ liệu dùng chung, reactive để Vue theo dõi thay đổi
+const sharedState = reactive({
+    dataCpm: {} as any,
+});
+
 module.exports = Editor.Panel.define({
     listeners: {
-        show() { console.log('show'); },
-        hide() { console.log('hide'); },
+        show() { console.log('Panel show'); },
+        hide() { console.log('Panel hide'); },
     },
+
     template: readFileSync(join(__dirname, '../../../static/template/default/index.html'), 'utf-8'),
     style: readFileSync(join(__dirname, '../../../static/style/default/index.css'), 'utf-8'),
+
     $: {
         app: '#app',
-        text: '#text'
+        text: '#text',
     },
+
     methods: {
         hello() {
             if (this.$.text) {
                 this.$.text.innerHTML = 'hello';
             }
         },
+
         callFile(msg: any) {
-            console.log("call From Secene in to index.js", msg);
-            Object.assign(panelDataMap, {})
+            try {
+                const msgObj = JSON.parse(msg);
+                console.log("🟡 callFile - Parsed object:", msgObj);
 
-        }
-        ,
+                Object.assign(sharedState.dataCpm, msgObj); // cập nhật vào reactive object
+            } catch (err) {
+                console.error("❌ JSON parse failed:", err);
+            }
+        },
+
         async asyncDataToJsonAct() {
-            console.log("asyncDataToJsonAct");
-            await Editor.Message.request('scene', 'query-node-tree').then((result) => {
-                console.log('🌿 Node tree result:', result);
-            });
-            // let result = Editor.Message.send('my-extension', 'helloEditorMode', 'Hieu');
-            // console.log('👉 Kết quả từ Editor:', result);
-            // return
-            // Editor.Message.send("scene",)
-            // const scene = director.getScene();
-            // const result: Component[] = [];
-            // const queue = [...scene.children]; // ✅ đúng kiểu
-            // for (let i = 0; i < queue.length; i++) {
-            //     const node = queue[i];
-            //     for (const comp of node.components) {
-            //         const ctor = comp.constructor as any;
-            //         const attrs = CCClass.Attr.getClassAttrs(ctor);
-            //         const hasProperty = 'parameterKey' in comp;
-            //         if (hasProperty) {
-            //             result.push(comp);
-            //         }
-            //     }
-            //     queue.push(...node.children);
-            // }
-            // return result;
-
-        }
+            console.log("🔄 asyncDataToJsonAct");
+            const result = await Editor.Message.request('scene', 'query-node-tree');
+            console.log('🌿 Node tree result:', result);
+        },
     },
+
     ready() {
         if (this.$.text) {
             this.$.text.innerHTML = 'Hello Cocos.';
         }
+
         if (this.$.app) {
-            const app = createApp({});
-            app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith('ui-');
-            app.component('MyCounter', {
-                template: readFileSync(join(__dirname, '../../../static/template/vue/counter.html'), 'utf-8'),
+            const app = createApp({
                 data() {
                     return {
                         counter: 0,
+                        sharedState, // bind vào Vue
                     };
-                }, methods: {
+                },
+                methods: {
                     addition() {
-                        ///genFile 
-                        console.log("Action GenFile--->>>>>>>>>>>>");
+                        console.log("🟢 addition called");
+                        console.log("📦 sharedState.dataCpm:", this.sharedState.dataCpm);
+                        try {
+                            const path = join(__dirname, '../../../outputdatajson/my-data.json'); // 📂 đường dẫn cần chỉnh đúng
+                            const jsonString = JSON.stringify(this.sharedState.dataCpm, null, 4); // đẹp, dễ đọc
+                            writeFileSync(path, jsonString, 'utf-8');
+                            console.log(`✅ File JSON đã được ghi tại: ${path}`);
+                            console.log('🚀 Sending to Editor:');
 
-                        // const { quickSpawn } = globalThis.Editor.Utils.Process;
+                            Editor.Message.send('scene', 'execute-scene-script', {
+                                name: 'vue3-template',
+                                method: 'hello',
+                                args: []
+                            });
 
-                        // const winPath = globalThis.Editor.Project.path.replace(/\//g, '\\');
-                        // const fullPath = `${winPath}\\assets\\my-file.json`;
-                        // const json = data
-                        // const jsonString = JSON.stringify(json, null, 4);
-                        // console.log(jsonString);
-                        // // Sử dụng PowerShell để ghi nội dung JSON an toàn
-                        // const psCommand = `Set-Content -Path "${fullPath}" -Value '${jsonString}'`;
-
-                        // quickSpawn('powershell', ['-Command', psCommand], {
-                        //     downGradeLog: true,
-                        //     onlyPrintWhenError: false,
-                        //     prefix: '',
-                        // }).then(() => {
-                        //     console.log(`✅ JSON file created at: ${fullPath}`);
-                        // }).catch(err => {
-                        //     console.error('❌ Failed to create JSON file:', err.message);
-                        // });
+                            Editor.Message.send('scene', 'execute-scene-script', {
+                                name: 'vue3-template',
+                                method: 'changeComponentProperty',
+                                args: ['Player', 'PlayerController', 'speed', 50]
+                            });
 
 
-
+                        } catch (err) {
+                            console.error("❌ Ghi file thất bại:", err);
+                        }
                     },
                     subtraction() {
+                        console.log(" subtraction called");
                     },
                 },
+                template: readFileSync(join(__dirname, '../../../static/template/vue/counter.html'), 'utf-8'),
             });
+
+            app.config.compilerOptions.isCustomElement = (tag) => tag.startsWith('ui-');
             app.mount(this.$.app);
             panelDataMap.set(this, app);
         }
     },
+
     beforeClose() { },
+
     close() {
         const app = panelDataMap.get(this);
         if (app) {
