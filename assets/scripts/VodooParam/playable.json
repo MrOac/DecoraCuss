@@ -1,0 +1,715 @@
+{
+  "$schema": "./node_modules/@voodoo.io/playable-config/schemas/build-configuration.schema.json",
+  "parameters": {
+      "NumberParameter":{
+      "label": "Money, Time cooldown, Hex Cost, Zoom percent",
+      "type": "object",
+      "category": "Gameplay",
+      "parameters": {
+        "money" : {
+          "label": "Money rewarded",
+          "type": "number",
+          "default": 10
+        },
+        "time":{
+          "label": "Time cooldown when tower spawn creep",
+          "type": "number",
+          "default": 3
+        },
+        "hexCost" : {
+          "label": "Hex cost",
+          "type": "range",
+          "default": 10,
+          "min": 0,
+          "max": 50,
+          "step": 1
+        },
+        "zoom" : {
+          "label": "Zoom percent",
+          "type": "range",
+          "default": 1,
+          "min": 0,
+          "max": 1,
+          "step": 0.01
+        }
+      }
+    },
+    "ButtonDownload": {
+        "label" : "Button PLAY NOW sprite",
+        "type" : "object",
+        "category": "Gameplay",
+        "parameters" : {
+        "sprite" : {
+          "label": "Sprite of this object",
+          "type": "image",
+          "default": "src/assets/btnWin.png"
+        },
+        "size": {"label": "Size of this image", "type": "coordinates", 
+                "default": {"x": 404,"y": 176} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of this image","type": "coordinates",
+                "default": {"x": 0,"y": -545},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}}
+                
+        } 
+      },
+      "ButtonDownloadText":{
+      "label": "Button PLAY NOW Text",
+      "type": "object",
+      "category": "Gameplay",
+      "parameters": {
+        "text" : {
+          "label": "Text of the button PLAY NOW",
+          "type": "text",
+          "default": "Play Now"
+        },
+        "fontSize": {
+          "label": "Font size",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "default": 50
+        },
+        "fontColor":{
+          "label": "Font color",
+          "type": "color",
+          "default": "#ffffff"
+        },
+        "strokeWidth" : {
+          "label": "Stroke Width",
+          "type": "range",
+          "min": 0,
+          "max": 10,
+          "step": 0.1,
+          "default": 2.5
+        },
+        "strokeColor":{
+          "label": "Stroke Color",
+          "type": "color",
+          "default": "#000000"
+        },
+        "pos": {
+          "type": "coordinates",
+          "label": "Position",
+          "default": {"x": 0,"y": 18},
+          "x": {"min": -1000,"max": 1000,"step": 1},
+          "y": {"min": -1000,"max": 1000,"step": 1}
+        }
+      }
+    },
+    "DropDownLevel" : {
+      "label": "Level design",
+      "type": "select",
+      "category": "Gameplay",
+      "default": "easy",
+      "options": [
+        {
+          "value": "easy",
+          "name": "Easy"
+        },
+        {
+          "value": "medium",
+          "name": "Medium"
+        },
+        {
+          "value": "hard",
+          "name": "Hard"
+        }
+      ]
+    },
+    "LosePopupToggle": {
+      "label": "Popup Lose Toggle",
+      "type": "boolean",
+      "default": false,
+      "category": "Lose Popup"
+    },
+    "LoseBG": {
+      "label": "Background in lose popup",
+      "type": "object",
+      "parameters": {
+        "color": {"label": "Color of BG", "type": "color", "default": "#00000096"},
+        "opacity": {"label": "Opacity of BG", "type": "range", "default": 155, "min": 0,"max": 255,"step": 1
+        },
+        "size": {"label": "Size of BG", "type": "coordinates", 
+                "default": {"x": 5000,"y": 5000} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of BG","type": "coordinates",
+                "default": {"x": 0,"y": 0},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}
+              }
+      },
+      "category": "Lose Popup"
+    },
+    "Sprite1Lose" : {
+      "label": "The crown image",
+      "type": "object",
+      "parameters": {
+        "sprite" : {
+          "label": "sprite of this object",
+          "type": "image",
+          "default": "src/assets/crownLose.png"
+        },
+        "size": {"label": "Size of this image", "type": "coordinates", 
+                "default": {"x": 848,"y": 366} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of this image","type": "coordinates",
+                "default": {"x": 0,"y": 195},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}}
+      },
+      "category": "Lose Popup"
+    },
+    "Sprite2Lose" : {
+      "label": "The icon image",
+      "type": "object",
+      "parameters": {
+        "sprite" : {
+          "label": "sprite of this object",
+          "type": "image",
+          "default": "src/assets/longqishiIcon.png"
+        },
+        "size": {"label": "Size of this image", "type": "coordinates", 
+                "default": {"x": 505,"y": 335} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of this image","type": "coordinates",
+                "default": {"x": 25,"y": 160},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}}
+      },
+      "category": "Lose Popup"
+    },
+     "ButtonSpriteLose" : {
+      "label": "The button image",
+      "type": "object",
+      "parameters": {
+        "sprite" : {
+          "label": "sprite of this object",
+          "type": "image",
+          "default": "src/assets/btnLose.png"
+        },
+        "size": {"label": "Size of this image", "type": "coordinates", 
+                "default": {"x": 404,"y": 176} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of this image","type": "coordinates",
+                "default": {"x": 0,"y": -375},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}}
+      },
+      "category": "Lose Popup"
+    },
+    "Text1Lose" : {
+      "label": "Mvp Text",
+      "type": "object",
+      "category": "Lose Popup",
+      "parameters": {
+        "text" : {
+          "label": "Text",
+          "type": "text",
+          "default": "MVP"
+        },
+        "fontSize": {
+          "label": "Font Size",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "default": 40
+        },
+        "fontColor":{
+          "label": "Font Color",
+          "type": "color",
+          "default": "#7BD6FA"
+        },
+        "strokeWidth" : {
+          "label": "Stroke Width",
+          "type": "range",
+          "min": 0,
+          "max": 10,
+          "step": 0.1,
+          "default": 3.4
+        },
+        "strokeColor":{
+          "label": "Stroke Color",
+          "type": "color",
+          "default": "#000000"
+        },
+        "pos": {
+          "type": "coordinates",
+          "label": "Position",
+          "default": {"x": 0,"y": 45},
+          "x": {"min": -1000,"max": 1000,"step": 1},
+          "y": {"min": -1000,"max": 1000,"step": 1}
+        }
+      }
+    },
+    "Text2Lose" : {
+      "label": "Defeated Text",
+      "type": "object",
+      "category": "Lose Popup",
+      "parameters": {
+        "text" : {
+          "label": "Text",
+          "type": "text",
+          "default": "DEFEATED"
+        },
+        "fontSize": {
+          "label": "Font Size",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "default": 60
+        },
+        "fontColor":{
+          "label": "Font Color",
+          "type": "color",
+          "default": "#7BD6FA"
+        },
+        "strokeWidth" : {
+          "label": "Stroke Width",
+          "type": "range",
+          "min": 0,
+          "max": 10,
+          "step": 0.1,
+          "default": 3.4
+        },
+        "strokeColor":{
+          "label": "Stroke Color",
+          "type": "color",
+          "default": "#000000"
+        },
+        "pos": {
+          "type": "coordinates",
+          "label": "Position",
+          "default": {"x": 0,"y": 2},
+          "x": {"min": -1000,"max": 1000,"step": 1},
+          "y": {"min": -1000,"max": 1000,"step": 1}
+        }
+      }
+    },
+    "ButtonTextLose" : {
+      "label": "Text in the button",
+      "type": "object",
+      "category": "Lose Popup",
+      "parameters": {
+        "text" : {
+          "label": "Text",
+          "type": "text",
+          "default": "Retry"
+        },
+        "fontSize": {
+          "label": "Font Size",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "default": 70
+        },
+        "fontColor":{
+          "label": "Font Color",
+          "type": "color",
+          "default": "#FFFFFF"
+        },
+        "strokeWidth" : {
+          "label": "Stroke Width",
+          "type": "range",
+          "min": 0,
+          "max": 10,
+          "step": 0.1,
+          "default": 3
+        },
+        "strokeColor":{
+          "label": "Stroke Color",
+          "type": "color",
+          "default": "#000000"
+        },
+        "pos": {
+          "type": "coordinates",
+          "label": "Position",
+          "default": {"x": 0,"y": 10},
+          "x": {"min": -1000,"max": 1000,"step": 1},
+          "y": {"min": -1000,"max": 1000,"step": 1}
+        }
+      }
+    },
+
+    "WinPopupToggle": {
+      "label": "Popup Win Toggle",
+      "type": "boolean",
+      "default": false,
+      "category": "Win Popup"
+    },
+    "WinBG": {
+      "label": "Background in win popup",
+      "type": "object",
+      "parameters": {
+        "color": {"label": "Color of BG", "type": "color", "default": "#00000096"},
+        "opacity": {"label": "Opacity of BG", "type": "range", "default": 155, "min": 0,"max": 255,"step": 1
+        },
+        "size": {"label": "Size of BG", "type": "coordinates", 
+                "default": {"x": 5000,"y": 5000} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of BG","type": "coordinates",
+                "default": {"x": 0,"y": 0},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}
+              }
+      },
+      "category": "Win Popup"
+    },
+    "Sprite1Win" : {
+      "label": "The crown image",
+      "type": "object",
+      "parameters": {
+        "sprite" : {
+          "label": "sprite of this object",
+          "type": "image",
+          "default": "src/assets/crownWin.png"
+        },
+        "size": {"label": "Size of this image", "type": "coordinates", 
+                "default": {"x": 848,"y": 366} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of this image","type": "coordinates",
+                "default": {"x": 0,"y": 230},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}}
+      },
+      "category": "Win Popup"
+    },
+    "Sprite2Win" : {
+      "label": "The icon image",
+      "type": "object",
+      "parameters": {
+        "sprite" : {
+          "label": "sprite of this object",
+          "type": "image",
+          "default": "src/assets/longIcon.png"
+        },
+        "size": {"label": "Size of this image", "type": "coordinates", 
+                "default": {"x": 312,"y": 357} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of this image","type": "coordinates",
+                "default": {"x": 4,"y": 160},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}}
+      },
+      "category": "Win Popup"
+    },
+     "ButtonWinSprite" : {
+      "label": "The button image",
+      "type": "object",
+      "parameters": {
+        "sprite" : {
+          "label": "sprite of this object",
+          "type": "image",
+          "default": "src/assets/btnWin.png"
+        },
+        "size": {"label": "Size of this image", "type": "coordinates", 
+                "default": {"x": 404,"y": 176} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of this image","type": "coordinates",
+                "default": {"x": 0,"y": -375},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}}
+      },
+      "category": "Win Popup"
+    },
+    "Text1Win" : {
+      "label": "Mvp Text",
+      "type": "object",
+      "category": "Win Popup",
+      "parameters": {
+        "text" : {
+          "label": "Text",
+          "type": "text",
+          "default": "MVP"
+        },
+        "fontSize": {
+          "label": "Font Size",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "default": 40
+        },
+        "fontColor":{
+          "label": "Font Color",
+          "type": "color",
+          "default": "#EFF73A"
+        },
+        "strokeWidth" : {
+          "label": "Stroke Width",
+          "type": "range",
+          "min": 0,
+          "max": 10,
+          "step": 0.1,
+          "default": 3.4
+        },
+        "strokeColor":{
+          "label": "Stroke Color",
+          "type": "color",
+          "default": "#000000"
+        },
+        "pos": {
+          "type": "coordinates",
+          "label": "Position",
+          "default": {"x": 0,"y": 45},
+          "x": {"min": -1000,"max": 1000,"step": 1},
+          "y": {"min": -1000,"max": 1000,"step": 1}
+        }
+      }
+    },
+    "Text2Win" : {
+      "label": "Victory Text",
+      "type": "object",
+      "category": "Win Popup",
+      "parameters": {
+        "text" : {
+          "label": "Text",
+          "type": "text",
+          "default": "VICTORY"
+        },
+        "fontSize": {
+          "label": "Font Size",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "default": 60
+        },
+        "fontColor":{
+          "label": "Font Color",
+          "type": "color",
+          "default": "#EFF73A"
+        },
+        "strokeWidth" : {
+          "label": "Stroke Width",
+          "type": "range",
+          "min": 0,
+          "max": 10,
+          "step": 0.1,
+          "default": 3.4
+        },
+        "strokeColor":{
+          "label": "Stroke Color",
+          "type": "color",
+          "default": "#000000"
+        },
+        "pos": {
+          "type": "coordinates",
+          "label": "Position",
+          "default": {"x": 0,"y": 2},
+          "x": {"min": -1000,"max": 1000,"step": 1},
+          "y": {"min": -1000,"max": 1000,"step": 1}
+        }
+      }
+    },
+    "ButtonTextWin" : {
+      "label": "Text in the button",
+      "type": "object",
+      "category": "Win Popup",
+      "parameters": {
+        "text" : {
+          "label": "Text",
+          "type": "text",
+          "default": "Next Level"
+        },
+        "fontSize": {
+          "label": "Font Size",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "default": 60
+        },
+        "fontColor":{
+          "label": "Font Color",
+          "type": "color",
+          "default": "#ffffff"
+        },
+        "strokeWidth" : {
+          "label": "Stroke Width",
+          "type": "range",
+          "min": 0,
+          "max": 10,
+          "step": 0.1,
+          "default": 3.4
+        },
+        "strokeColor":{
+          "label": "Stroke Color",
+          "type": "color",
+          "default": "#000000"
+        },
+        "pos": {
+          "type": "coordinates",
+          "label": "Position",
+          "default": {"x": 0,"y": 10},
+          "x": {"min": -1000,"max": 1000,"step": 1},
+          "y": {"min": -1000,"max": 1000,"step": 1}
+        }
+      }
+    },
+    "HandReshow": {
+      "label": "Tutorial reshow time",
+      "type": "number",
+      "default": 4,
+      "category": "Tutorial"
+    },
+    "TutPos": {
+      "label": "Position of tutorial",
+      "type": "coordinates",
+      "default": {"x": 0, "y": 0},
+      "x": {"min": -1000,"max": 1000,"step": 1},
+      "y": {"min": -1000,"max": 1000,"step": 1},
+      "category": "Tutorial"  
+    },
+    "HandTut" : {
+      "label": "The button image",
+      "type": "object",
+      "parameters": {
+        "sprite" : {
+          "label": "sprite of this object",
+          "type": "image",
+          "default": "src/assets/hand.png"
+        },
+        "size": {"label": "Size of this image", "type": "coordinates", 
+                "default": {"x": 432,"y": 473} ,
+                "x": {"min": 0, "max": 10000, "step": 1},
+                "y": {"min": 0, "max": 10000,"step": 1}},
+        "pos": {"label": "Position of this image","type": "coordinates",
+                "default": {"x": 65,"y": -207},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}}
+      },
+      "category": "Tutorial"
+    },
+    "TextTut":{
+      "label": "Text of this tutorial",
+      "type": "object",
+      "category": "Tutorial",
+      "parameters": {
+        "text" : {
+          "label": "Text",
+          "type": "text",
+          "default": "Tap to attack"
+        },
+        "fontSize": {
+          "label": "Font Size",
+          "type": "range",
+          "min": 0,
+          "max": 200,
+          "step": 1,
+          "default": 50
+        },
+        "fontColor":{
+          "label": "Font Color",
+          "type": "color",
+          "default": "#ffffff"
+        },
+        "strokeWidth" : {
+          "label": "Stroke Width",
+          "type": "range",
+          "min": 0,
+          "max": 10,
+          "step": 0.1,
+          "default": 3.4
+        },
+        "strokeColor":{
+          "label": "Stroke Color",
+          "type": "color",
+          "default": "#000000"
+        },
+        "pos": {
+          "type": "coordinates",
+          "label": "Position",
+          "default": {"x": -18,"y": 565},
+          "x": {"min": -1000,"max": 1000,"step": 1},
+          "y": {"min": -1000,"max": 1000,"step": 1}
+        }
+      }
+    },
+    "TutorialBox" : {
+      "label": "the rectangle of tutorial",
+      "type": "object",
+      "category": "Tutorial",
+      "parameters": {
+        "width" :{
+          "label": "width",
+          "type": "number",
+          "default": 300
+        },
+          "height" :{
+          "label": "height",
+          "type": "number",
+          "default": 200
+        }
+      }
+    },
+    "TimerSprite" : {
+      "label": "Image of the timer",
+      "type": "image",
+      "default": "src/assets/IdleReward.png",
+      "category": "Timer"
+    },
+    "ColorBasic" : {
+      "label": "Color of the grid",
+      "type": "object",
+      "category": "Color",
+      "parameters": {
+        "color1" : {
+          "label": "Enemy grid color",
+          "type": "color",
+          "default": "#FF6B6B"
+        },
+        "color2":{
+          "label": "default grid color",
+          "type": "color",
+          "default": "#797979"
+        },
+        "color3":{
+          "label": "Player grid color",
+          "type": "color",
+          "default": "8DFF24"
+        }
+      }
+    },
+    "TimerToggle": {
+      "label": "Timer Toggle",
+      "type": "boolean",
+      "default": true,
+      "category": "Timer"
+    },
+    "Timer": {
+      "label": "Parameters of this timer",
+      "type": "object",
+      "category": "Timer",
+      "parameters": {
+        "time":{
+          "label": "set Second",
+          "type": "number",
+          "default": 60
+        },
+        "size": {"label": "Size of this timer", "type": "coordinates", 
+                "default": {"x": 1,"y": 1} ,
+                "x": {"min": 0, "max": 5, "step": 0.1},
+                "y": {"min": 0, "max": 5,"step": 0.1}},
+        "pos": {"label": "Position of this timer","type": "coordinates",
+                "default": {"x": 0,"y": 500},
+                "x": {"min": -1000,"max": 1000,"step": 1},
+                "y": {"min": -1000,"max": 1000,"step": 1}}
+      }
+    }
+  }
+}

@@ -26,22 +26,6 @@ export class TestLayoutReference extends CompenentCustom {
     protected async start() {
 
 
-        
-
-        Editor.Panel.has("vue3-template").then(async (value) => {
-            // if (!value) Editor.Panel.open("vue3-template");
-            // const result = await this.getCpmIdentification();
-            console.log("_________________________________");
-            console.log(this.dataCpm);
-            const dataCpm = JSON.stringify(this.dataCpm);
-
-<<<<<<< HEAD
-=======
-            
->>>>>>> e548b5cb4b1946d5ad03309eaf355f725aef1d20
-            Editor.Message.send('vue3-template', "callFile", dataCpm);
-            
-        });
     }
 
     async getCpmIdentification(): Promise<Component[]> {
@@ -72,7 +56,6 @@ export class TestLayoutReference extends CompenentCustom {
             if (Object.prototype.hasOwnProperty.call(fromComponent, key)) {
                 const element = fromComponent[key];
                 if (filePath.indexOf(key) != -1) {
-                    // this.fielData(element);
                     listMapCompoment.set(key, element);
                 }
             }
@@ -81,46 +64,6 @@ export class TestLayoutReference extends CompenentCustom {
         const jsonObject = Object.fromEntries(listMapCompoment);
         console.log(JSON.stringify(jsonObject, null, 2));
         return;
-    }
-
-
-    fielData(targetCpm: Component) {
-        console.log(typeof targetCpm);
-        switch (typeof targetCpm) {
-            case "object":
-                console.log("object", targetCpm.constructor.name, targetCpm);
-                this.fielDataObject(targetCpm);
-                break;
-            case "function":
-                break;
-            case "symbol":
-                break;
-            case "string":
-                console.log("string", targetCpm, targetCpm);
-                break;
-            case "bigint":
-                break;
-            case "number":
-                console.log("number", targetCpm, targetCpm);
-                break;
-            case "boolean":
-                break;
-            case "undefined":
-                break;
-            default:
-                break;
-        }
-
-    }
-    fielDataObject(data: any) {
-        let cloneData = {}
-        Object.assign(cloneData, data)
-        console.log(cloneData);
-        return
-    }
-    creatFile(data: any) {
-        return;
-
     }
 
     getNewValueTypeCodeUniversal(value: any): string | null {
