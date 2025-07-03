@@ -1,54 +1,229 @@
 {
-    "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu": {
-        "label": "The button image",
-        "type": "object",
-        "category": "",
-        "default": {
-            "x": 100,
-            "y": 100
+    "$schema": "./node_modules/@voodoo.io/playable-config/schemas/build-configuration.schema.json",
+    "parameters": {
+        "Background in lose popup_object_0": {
+            "label": "Background in lose popup",
+            "type": "object",
+            "category": "Lose Popup",
+            "parameters": [
+                {
+                    "label": "Color of BG",
+                    "type": "color",
+                    "default": "#ffffffff"
+                },
+                {
+                    "label": "Opacity of BG",
+                    "type": "range",
+                    "default": 255,
+                    "min": 0,
+                    "max": 255,
+                    "step": 1
+                },
+                {
+                    "label": "Size of BG",
+                    "type": "coordinates",
+                    "default": {
+                        "x": 1024,
+                        "y": 1024
+                    },
+                    "x": {
+                        "min": 0,
+                        "max": 10000,
+                        "step": 1
+                    },
+                    "y": {
+                        "min": 0,
+                        "max": 10000,
+                        "step": 1
+                    }
+                },
+                {
+                    "label": "Position of BG",
+                    "type": "coordinates",
+                    "default": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "x": {
+                        "min": -1000,
+                        "max": 1000,
+                        "step": 1
+                    },
+                    "y": {
+                        "min": -1000,
+                        "max": 1000,
+                        "step": 1
+                    }
+                }
+            ]
         },
-        "parameters": {
-            "sprite": {
-                "label": "sprite of this object",
-                "type": "image",
-                "default": ""
-            },
-            "size": {
-                "label": "",
-                "type": "",
-                "default": {
-                    "x": 0,
-                    "y": 0
+        "Background in lose popup_object_1": {
+            "label": "Background in lose popup",
+            "type": "object",
+            "category": "Lose Popup",
+            "parameters": [
+                {
+                    "label": "Color of BG",
+                    "type": "color",
+                    "default": "#ffffffff"
                 },
-                "x": {
+                {
+                    "label": "Opacity of BG",
+                    "type": "range",
+                    "default": 255,
                     "min": 0,
-                    "max": 10000,
+                    "max": 255,
                     "step": 1
                 },
-                "y": {
+                {
+                    "label": "Size of BG",
+                    "type": "coordinates",
+                    "default": {
+                        "x": 1024,
+                        "y": 1024
+                    },
+                    "x": {
+                        "min": 0,
+                        "max": 10000,
+                        "step": 1
+                    },
+                    "y": {
+                        "min": 0,
+                        "max": 10000,
+                        "step": 1
+                    }
+                },
+                {
+                    "label": "Position of BG",
+                    "type": "coordinates",
+                    "default": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "x": {
+                        "min": -1000,
+                        "max": 1000,
+                        "step": 1
+                    },
+                    "y": {
+                        "min": -1000,
+                        "max": 1000,
+                        "step": 1
+                    }
+                }
+            ]
+        },
+        "Background in lose popup_object_2": {
+            "label": "Background in lose popup",
+            "type": "object",
+            "category": "Lose Popup",
+            "parameters": [
+                {
+                    "label": "Color of BG",
+                    "type": "color",
+                    "default": "#ffffffff"
+                },
+                {
+                    "label": "Opacity of BG",
+                    "type": "range",
+                    "default": 255,
                     "min": 0,
-                    "max": 10000,
-                    "step": 1
-                }
-            },
-            "pos": {
-                "label": "",
-                "type": "",
-                "default": {
-                    "x": 0,
-                    "y": 0
-                },
-                "x": {
-                    "min": -1000,
-                    "max": 1000,
+                    "max": 255,
                     "step": 1
                 },
-                "y": {
-                    "min": -1000,
-                    "max": 1000,
-                    "step": 1
+                {
+                    "label": "Size of BG",
+                    "type": "coordinates",
+                    "default": {
+                        "x": 1024,
+                        "y": 1024
+                    },
+                    "x": {
+                        "min": 0,
+                        "max": 10000,
+                        "step": 1
+                    },
+                    "y": {
+                        "min": 0,
+                        "max": 10000,
+                        "step": 1
+                    }
+                },
+                {
+                    "label": "Position of BG",
+                    "type": "coordinates",
+                    "default": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "x": {
+                        "min": -1000,
+                        "max": 1000,
+                        "step": 1
+                    },
+                    "y": {
+                        "min": -1000,
+                        "max": 1000,
+                        "step": 1
+                    }
                 }
-            }
+            ]
+        },
+        "Background in lose popup_object_3": {
+            "label": "Background in lose popup",
+            "type": "object",
+            "category": "Lose Popup",
+            "parameters": [
+                {
+                    "label": "Color of BG",
+                    "type": "color",
+                    "default": "#ffffffff"
+                },
+                {
+                    "label": "Opacity of BG",
+                    "type": "range",
+                    "default": 255,
+                    "min": 0,
+                    "max": 255,
+                    "step": 1
+                },
+                {
+                    "label": "Size of BG",
+                    "type": "coordinates",
+                    "default": {
+                        "x": 1024,
+                        "y": 1024
+                    },
+                    "x": {
+                        "min": 0,
+                        "max": 10000,
+                        "step": 1
+                    },
+                    "y": {
+                        "min": 0,
+                        "max": 10000,
+                        "step": 1
+                    }
+                },
+                {
+                    "label": "Position of BG",
+                    "type": "coordinates",
+                    "default": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "x": {
+                        "min": -1000,
+                        "max": 1000,
+                        "step": 1
+                    },
+                    "y": {
+                        "min": -1000,
+                        "max": 1000,
+                        "step": 1
+                    }
+                }
+            ]
         }
     }
 }

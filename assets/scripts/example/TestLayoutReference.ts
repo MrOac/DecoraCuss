@@ -1,14 +1,13 @@
 import { _decorator, CCClass, CCString, Component, director, js, log, Sprite, SpriteFrame, sys, Node, Vec3 } from 'cc';
 import { EDITOR } from 'cc/env';
 import { Identification } from '../DecoratorCusstooom/Identification';
-import { CompenentCustom } from '../DecoratorCusstooom/CompenentCustom';
 
 const { ccclass, property, executeInEditMode } = _decorator;
 
 @ccclass('TestLayoutReference')
 @Identification("TestLayoutReference")
 
-export class TestLayoutReference extends CompenentCustom {
+export class TestLayoutReference extends Component {
     @property({ type: SpriteFrame })
     leftSF: SpriteFrame = null;
 
@@ -24,6 +23,9 @@ export class TestLayoutReference extends CompenentCustom {
 
 
     protected async start() {
+
+        
+
 
 
     }

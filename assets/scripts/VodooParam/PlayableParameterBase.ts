@@ -70,7 +70,6 @@ export class PlayableParameterBase extends Component {
             default:
                 break;
         }
-        console.log("Check Data", dataSetup);
         return dataSetup
     }
 
